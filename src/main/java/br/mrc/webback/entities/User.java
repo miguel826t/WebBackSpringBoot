@@ -3,9 +3,18 @@ package br.mrc.webback.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import jakarta.persistence.*;
+
+
+@EntityScan
+@Table(name = "tb_user")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private String usId;
 	private String usName;
 	private String usEmail;
