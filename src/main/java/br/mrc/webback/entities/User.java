@@ -8,13 +8,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import jakarta.persistence.*;
 
 
-@EntityScan
+@Entity
 @Table(name = "tb_user")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private String usId;
 	private String usName;
 	private String usEmail;
