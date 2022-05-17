@@ -1,11 +1,15 @@
 package br.mrc.webback.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import jakarta.persistence.*;
+import ch.qos.logback.core.encoder.ByteArrayUtil;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 //Marcação para o spring mapear essa entidade
@@ -21,6 +25,10 @@ public class User implements Serializable{
 	private String usFone;
 	private String usPass;
 	
+	//Mapeamento do muitos pedidos
+	@OneToMany(mappedBy = "client")
+	private List<Order> orders = new ArrayList<Order>();
+	
 	public User() {}
 
 	public User(String usId, String usName, String usEmail, String usFone, String usPass) {
@@ -33,7 +41,11 @@ public class User implements Serializable{
 	}
 
 	
-	//HastCode ID------------------
+	//Orders ,HastCode ID------------------
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(usId);
@@ -91,9 +103,5 @@ public class User implements Serializable{
 	public void setUsPass(String usPass) {
 		this.usPass = usPass;
 	}
-	
-	
-	
-	
-	
+
 }
