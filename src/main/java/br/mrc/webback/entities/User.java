@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import jakarta.persistence.*;
 
 
+//Marcação para o spring mapear essa entidade
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable{

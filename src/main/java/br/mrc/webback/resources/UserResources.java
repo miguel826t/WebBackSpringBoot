@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.mrc.webback.entities.User;
 
+//Controler do User
 @RestController
 @RequestMapping(value = "/users")
 public class UserResources {
