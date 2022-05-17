@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ch.qos.logback.core.encoder.ByteArrayUtil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -27,6 +29,7 @@ public class User implements Serializable{
 	
 	//Mapeamento do muitos pedidos
 	@OneToMany(mappedBy = "client")
+	@JsonIgnore
 	private List<Order> orders = new ArrayList<Order>();
 	
 	public User() {}
