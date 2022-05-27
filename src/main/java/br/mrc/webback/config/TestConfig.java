@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 
 import br.mrc.webback.entities.Category;
 import br.mrc.webback.entities.Order;
+import br.mrc.webback.entities.OrderItem;
 import br.mrc.webback.entities.Product;
 import br.mrc.webback.entities.User;
 import br.mrc.webback.entities.enums.OrderStatus;
 import br.mrc.webback.repositories.ICategoryRepository;
+import br.mrc.webback.repositories.IOrderItemRepository;
 import br.mrc.webback.repositories.IOrderRepository;
 import br.mrc.webback.repositories.IProductRepository;
 import br.mrc.webback.repositories.IUserRepository;
@@ -36,6 +38,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private IProductRepository productRepository;
+	
+	@Autowired
+	private IOrderItemRepository orderItemRepository;
 
 	//Metodo herdado do CommandLineRunner
 	//Executa tudo dentro dele quando a aplicação é rodada
@@ -71,6 +76,12 @@ public class TestConfig implements CommandLineRunner{
 		p4.getCategories().add(cat3);
 		p2.getCategories().add(cat2);
 		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice()); 
+		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice()); 
+		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice()); 
+		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice()); 
+		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
 	}
 	
