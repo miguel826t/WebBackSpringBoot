@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.annotations.IdGeneratorType;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -20,7 +24,9 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private String usId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long usId;
+	
 	private String usName;
 	private String usEmail;
 	private String usFone;
@@ -33,7 +39,7 @@ public class User implements Serializable{
 	
 	public User() {}
 
-	public User(String usId, String usName, String usEmail, String usFone, String usPass) {
+	public User(Long usId, String usName, String usEmail, String usFone, String usPass) {
 		super();
 		this.usId = usId;
 		this.usName = usName;
@@ -66,11 +72,11 @@ public class User implements Serializable{
 	}
 
 	//Gets and Sets-----------------------------------
-	public String getUsId() {
+	public Long getUsId() {
 		return usId;
 	}
 	
-	public void setUsId(String usId) {
+	public void setUsId(Long usId) {
 		this.usId = usId;
 	}
 

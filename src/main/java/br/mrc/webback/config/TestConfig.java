@@ -48,8 +48,8 @@ public class TestConfig implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		User us1 = new User("1","M da casa C","Mrc@gmail.com","9988224458","123456");
-		User us2 = new User("2","R da casa Silva","RS@gmail.com","358486","65448");
+		User us1 = new User(null,"M da casa C","Mrc@gmail.com","9988224458","123456");
+		User us2 = new User(null,"R da casa Silva","RS@gmail.com","358486","65448");
 		userRepository.saveAll(Arrays.asList(us1,us2));		
 		
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"),OrderStatus.CANCELED, us1); 
