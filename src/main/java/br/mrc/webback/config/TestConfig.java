@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.mrc.webback.entities.Category;
 import br.mrc.webback.entities.Order;
 import br.mrc.webback.entities.OrderItem;
+import br.mrc.webback.entities.Payment;
 import br.mrc.webback.entities.Product;
 import br.mrc.webback.entities.User;
 import br.mrc.webback.entities.enums.OrderStatus;
@@ -55,6 +56,10 @@ public class TestConfig implements CommandLineRunner{
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"),OrderStatus.DELIVERED, us2); 
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),OrderStatus.PAID, us1); 
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));		
+		
+		Payment pay1 = new Payment(null, null, o1);
+		o1.setPayment(pay1);
+		orderRepository.save(o1);
 		
 		Category cat1 = new Category(null, "Electronics"); 
 		Category cat2 = new Category(null, "Books"); 
